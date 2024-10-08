@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows System Services</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff);
+            background-image: url('https://cdn.pixabay.com/photo/2024/05/23/09/12/ai-generated-8782744_1280.jpg');
+        }
+
+        h1 {
+            text-align: center;
+            color:indianred;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .service-list {
+            list-style-type:none;
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            padding-top:  10px;
+            flex-wrap: wrap;
+        }
+
+        .service-item {
+            width: 18%; /* Set width */
+            height: 150px; /* Set height for square */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 15px; /* Increased margin for spacing */
+            background-color: lightsalmon;
+            display:flex;
+            flex-direction:column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            transition: background-color 0.3s;
+            text-align: center;
+            padding: 30px;
+        }
+        .service-item img {
+            width: 100%; /* Set image width to fill the container */
+            height: 80px; /* Adjust height as needed */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+            border-radius: 5px 5px 0 0; /* Round top corners of the image */
+            padding:10px;
+        }
+        .service-item:hover {
+            background-color:lightcoral;
+        }
+
+        .service-title {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .service-description {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            border: none;
+            background-color:orangered;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+
+<body>
+        <h1>WINDOWS   SYSTEM   SERVICES</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for services..." />
+            <button class="search-button" onclick="searchServices()">Search</button>
+        </div>
+        <ul id="serviceList" class="service-list"></ul>
+
+
+    <script>
+        const services = [
+            { title: "Windows Installation and Updates" ,image: "https://c4.wallpaperflare.com/wallpaper/575/937/209/microsoft-glowing-simple-background-window-windows-10-hd-wallpaper-preview.jpg" },
+            { title: "Antivirus & Software Installation",image: "https://c4.wallpaperflare.com/wallpaper/991/247/589/microsoft-surface-red-touch-cover-windows-8-wallpaper-preview.jpg"},
+            { title: "Fix Hard Disk Errors and Data Recovery",image: "https://c0.wallpaperflare.com/preview/697/898/445/cloud-computing-illustration-technology.jpg" },
+            { title: "Fix Startup Problems & Restart Loop",image: "https://media.istockphoto.com/id/1193166520/vector/vector-line-illustration-concept-for-404-not-found-editable-stroke-and-pixel-perfect.jpg?s=1024x1024&w=is&k=20&c=lDUuE944mmbovcLhVKthZcTh7rftqpPUZqWTTY8fqHY=" },
+            { title: "Fix Blue Screen & Dead Screen Errors" ,image: "https://media.istockphoto.com/id/1625763686/vector/system-error-window-error-message-computer-window-alert-popup-vintage-window-bar-with-system.jpg?s=1024x1024&w=is&k=20&c=xylte1sNDCfRh1KkNua3U_q6CaSWFIIE7SyBSqJaLxA="},
+            { title: "Troubleshooting & Network Issues" ,image: "https://media.istockphoto.com/id/1011988208/vector/404-error-like-laptop-with-dead-emoji-cartoon-flat-minimal-trend-modern-simple-logo-graphic.jpg?s=1024x1024&w=is&k=20&c=3ZEB3UwsO2MweFMjIJ08wGw5y_sI-aWTdlAIOzekiJk=" },
+            // Add more services as needed
+        ];
+
+        function displayServices(serviceList) {
+            const serviceListElement = document.getElementById('serviceList');
+            serviceListElement.innerHTML = '';
+            serviceList.forEach(service => {
+                const serviceItem = document.createElement('li');
+                serviceItem.className = 'service-item';
+                serviceItem.innerHTML = `
+                    <div class="service-title">${service.title}</div>
+                      <img src="${service.image}" alt="${service.title} Image" />
+                `;
+                serviceListElement.appendChild(serviceItem);
+            });
+        }
+
+        function searchServices() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const filteredServices = services.filter(service =>
+                service.title.toLowerCase().includes(searchValue) ||
+                service.image.toLowerCase().includes(searchValue)
+            );
+            displayServices(filteredServices);
+        }
+
+        // Display all services initially
+        displayServices(services);
+    </script>
+</body>
+
+</html>
